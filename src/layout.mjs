@@ -86,6 +86,8 @@ ${p.post ? `<meta property="article:published_time" content="${p.post.published}
 ${ogUrl ? `<meta name="twitter:image" content="${ogUrl}">` : ''}
 <link rel="preload" href="${fonts['barlow-800-italic']}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${fonts['inter-400']}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${fonts['inter-600']}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${fonts['barlow-800']}" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js');try{if(localStorage.getItem('theme')==='light'){document.documentElement.setAttribute('data-theme','light');document.querySelector('meta[name=theme-color]').setAttribute('content','#fbfaf7')}}catch(e){}</script>
 <style>${css}</style>
 ${jsonld}

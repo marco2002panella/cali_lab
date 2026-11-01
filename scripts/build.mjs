@@ -10,7 +10,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
 const CACHE = path.join(ROOT, '.cache');
-const WIDTHS = [480, 800, 1200, 1600];
+const WIDTHS = [400, 640, 900, 1200, 1600];
 
 const hash = (buf, n = 8) => crypto.createHash('sha1').update(buf).digest('hex').slice(0, n);
 const write = (rel, data) => {
@@ -88,7 +88,7 @@ async function build() {
         const cached = path.join(CACHE, `${name}.${h}-${w}.${fmt}`);
         if (!fs.existsSync(cached)) {
           const pipe = sharp(buf).rotate().resize({ width: w, withoutEnlargement: true });
-          fs.writeFileSync(cached, await (fmt === 'avif' ? pipe.avif({ quality: 52, effort: 4 }) : pipe.webp({ quality: 78 })).toBuffer());
+          fs.writeFileSync(cached, await (fmt === 'avif' ? pipe.avif({ quality: 44, effort: 5 }) : pipe.webp({ quality: 72 })).toBuffer());
         }
         write(rel, fs.readFileSync(cached));
         variants.push({ w, h: hh, fmt, url: '/' + rel });

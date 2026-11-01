@@ -37,7 +37,8 @@ export default ({ img }) => ({
 <p class="lede">Lezioni da 90 minuti, per ogni livello. I primi 2 allenamenti sono gratuiti.</p>
 </section>
 
-<section class="sec wrap" aria-label="Turni">
+<section class="sec wrap" aria-labelledby="turni-t">
+<h2 class="sr" id="turni-t">I turni</h2>
 <div class="grid c3">${courseCards(img)}</div>
 <p class="small" style="margin-top:24px">${biz.street}, ${biz.city} · ${biz.venue}</p>
 </section>
