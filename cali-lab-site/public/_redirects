@@ -1,0 +1,5 @@
+# Vecchi feed di WordPress
+/feed /blog/ 301
+/feed/ /blog/ 301
+/comments/feed /blog/ 301
+/comments/feed/ /blog/ 301
