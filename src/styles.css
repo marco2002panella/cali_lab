@@ -378,7 +378,4 @@ a,button{touch-action:manipulation}
 .h1:hover,.h2:hover,.h3:hover,.art-head h1:hover{scale:1.04}
 .lrow.solo .h3,.lrow.solo .ltxt{transform-origin:center}
 .lrow .ltxt .h3:hover{scale:1}
-.ph img,.hero-photo img{transition:scale .7s cubic-bezier(.2,.7,.2,1)}
-.ph:hover img,.hero-photo:hover img{scale:1.07}
-.lphotos>picture{overflow:hidden}.lphotos>picture:hover img{scale:1.07}
 }
