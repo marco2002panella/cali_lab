@@ -14,7 +14,7 @@ const card = (img, p, h = 'h2') => `<a class="post" href="/${p.slug}/">
 <${h}>${esc(p.short)}</${h}>
 </a>`;
 
-export default ({ img }) => {
+export default ({ img, images }) => {
   const index = {
     path: '/blog/',
     title: 'Blog Calisthenics & Psicologia dello Sport | Cali Lab',
@@ -58,7 +58,7 @@ export default ({ img }) => {
 <h1>${esc(p.h1)}</h1>
 <p class="byline">${img('andrea-zomparelli', { alt: '', sizes: '48px' })}<span><b>${biz.founder}</b>Pubblicato il <time datetime="${p.published}">${fmt(p.published)}</time>${p.modified !== p.published ? ` · aggiornato il <time datetime="${p.modified}">${fmt(p.modified)}</time>` : ''}</span></p>
 </div></header>
-<div class="wrap"><div class="ph art-cover">${img(p.image, { alt: p.short, eager: true, sizes: '(min-width:1240px) 1200px, 92vw' })}</div></div>
+<div class="wrap"><div class="ph art-cover"${images[p.image].w / images[p.image].h > 1.5 ? ` style="aspect-ratio:${images[p.image].w}/${images[p.image].h};max-height:none"` : ''}>${img(p.image, { alt: p.short, eager: true, sizes: '(min-width:1240px) 1200px, 92vw' })}</div></div>
 <div class="wrap"><div class="prose">${html}</div>
 <aside class="author-box" aria-label="L’autore">${img('andrea-zomparelli', { alt: biz.founder, sizes: '72px' })}<p><b>${biz.founder}</b>Fondatore di Cali Lab, Tecnico Federale FGI, ex atleta agonista di ginnastica artistica e psicologo della comunicazione e del marketing.</p></aside>
 </div>
