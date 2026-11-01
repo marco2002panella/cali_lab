@@ -314,3 +314,8 @@ html:not(.js) .nav a::after,html:not(.js) .nav-foot{display:none}
   .prose .cards{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+a,button{touch-action:manipulation}
+.nav a:active,.ft a:active,.bar a:active,.post:active,.course:active,.logo:active{opacity:.6}
+.nav a:active{background:var(--s1)}
+.btn,.burger,.theme{transition-duration:.08s}
+.js .navbox{transition-duration:.12s}
