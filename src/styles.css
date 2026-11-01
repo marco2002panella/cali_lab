@@ -365,5 +365,20 @@ a,button{touch-action:manipulation}
 @media(min-width:960px){.split{grid-template-columns:1fr 1fr;gap:72px;align-items:center}.split .pillars{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}.split .pillar{border:0;border-bottom:1px solid var(--line);padding:22px 0 22px 20px}.split .pillar::before{display:block}.dove .wide{aspect-ratio:auto;min-height:440px;max-height:none}.dove .mapcell,.dove .map{min-height:440px}}
 .mapcell{display:flex}
 .map.fill{margin-top:0;height:auto;flex:1;min-height:340px}
-.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),scale .35s ease;transition-delay:var(--d,0s),var(--d,0s),0s}
 .rv.in{opacity:1;transform:none}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+.track:not(.rv),.pillar:not(.rv),.post:not(.rv),.step:not(.rv),.author-box:not(.rv),.cta:not(.rv),.quote:not(.rv),.faq details:not(.rv),.rows .row:not(.rv),.lrow .ltxt{transition:scale .35s ease}
+.track,.pillar,.post,.step,.author-box,.cta,.quote,.faq details,.rows .row,.lrow .ltxt{transform-origin:center}
+.track:hover,.pillar:hover,.post:hover,.step:hover,.author-box:hover,.rows .row:hover{scale:1.03}
+.cta:hover,.quote:hover,.faq details:hover{scale:1.015}
+.lrow .ltxt:hover{scale:1.03}
+.h1:not(.rv),.h2:not(.rv),.h3:not(.rv),.art-head h1:not(.rv){transition:scale .3s ease}
+.h1,.h2,.h3,.art-head h1{transform-origin:left center}
+.h1:hover,.h2:hover,.h3:hover,.art-head h1:hover{scale:1.04}
+.lrow.solo .h3,.lrow.solo .ltxt{transform-origin:center}
+.lrow .ltxt .h3:hover{scale:1}
+.ph img,.hero-photo img{transition:scale .7s cubic-bezier(.2,.7,.2,1)}
+.ph:hover img,.hero-photo:hover img{scale:1.07}
+.lphotos>picture{overflow:hidden}.lphotos>picture:hover img{scale:1.07}
+}
