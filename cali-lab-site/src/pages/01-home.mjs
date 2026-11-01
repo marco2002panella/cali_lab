@@ -53,10 +53,9 @@ export default ({ img }) => ({
 <h2 class="h2" id="dove-t">Dove ci alleniamo</h2>
 <p class="lede" style="margin-top:20px">${biz.venue}: una vera palestra di ginnastica artistica, con anelli, parallele e sbarre.</p>
 <dl class="rows" style="margin-top:28px">
-<div class="row"><dt>Indirizzo</dt><dd>${biz.street}, ${biz.zip} ${biz.city}</dd></div>
+<div class="row"><dt>Indirizzo</dt><dd><a class="lnk" href="${biz.mapsPlace}" rel="noopener" target="_blank">${biz.street}, ${biz.zip} ${biz.city}</a></dd></div>
 <div class="row"><dt>Telefono</dt><dd><a href="${biz.phoneHref}">${biz.phone}</a></dd></div>
 </dl>
-<a class="more" href="${biz.mapsPlace}" rel="noopener" target="_blank">${icons.pin}&nbsp;Indicazioni su Google Maps →</a>
 </div>
 </div>
 </section>

@@ -53,11 +53,11 @@ export default ({ img }) => {
       }],
       body: `
 <article>
-<header class="wrap art-head">
+<header class="wrap"><div class="art-head">
 <p class="eyebrow">${p.tag}</p>
 <h1>${esc(p.h1)}</h1>
 <p class="byline">${img('andrea-zomparelli', { alt: '', sizes: '48px' })}<span><b>${biz.founder}</b>Pubblicato il <time datetime="${p.published}">${fmt(p.published)}</time>${p.modified !== p.published ? ` · aggiornato il <time datetime="${p.modified}">${fmt(p.modified)}</time>` : ''}</span></p>
-</header>
+</div></header>
 <div class="wrap"><div class="ph art-cover">${img(p.image, { alt: p.short, eager: true, sizes: '(min-width:1240px) 1200px, 92vw' })}</div></div>
 <div class="wrap"><div class="prose">${html}</div>
 <aside class="author-box" aria-label="L’autore">${img('andrea-zomparelli', { alt: biz.founder, sizes: '72px' })}<p><b>${biz.founder}</b>Fondatore di Cali Lab, Tecnico Federale FGI, ex atleta agonista di ginnastica artistica e psicologo della comunicazione e del marketing.</p></aside>

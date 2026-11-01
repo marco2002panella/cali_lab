@@ -28,7 +28,7 @@ export const businessLd = {
   knowsLanguage: 'it',
 };
 
-export async function renderPage(p, { css, fonts, logoUrl, logoRatio, og, img }) {
+export async function renderPage(p, { css, fonts, logoUrl, logoLightUrl, logoRatio, og, img }) {
   const url = `${SITE_URL}${p.path === '/404' ? '/' : p.path}`;
   const ogUrl = p.ogImage ? SITE_URL + (await og(p.ogImage)) : '';
   const fullTitle = p.title;
@@ -67,7 +67,6 @@ export async function renderPage(p, { css, fonts, logoUrl, logoRatio, og, img })
 ${p.noindex ? '<meta name="robots" content="noindex,follow">' : '<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">'}
 ${p.noindex ? '' : `<link rel="canonical" href="${url}">`}
 <meta name="theme-color" content="#0a0a0a">
-<meta name="color-scheme" content="dark">
 <meta name="format-detection" content="telephone=yes">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -87,7 +86,7 @@ ${p.post ? `<meta property="article:published_time" content="${p.post.published}
 ${ogUrl ? `<meta name="twitter:image" content="${ogUrl}">` : ''}
 <link rel="preload" href="${fonts['barlow-800-italic']}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${fonts['inter-400']}" as="font" type="font/woff2" crossorigin>
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');try{if(localStorage.getItem('theme')==='light'){document.documentElement.setAttribute('data-theme','light');document.querySelector('meta[name=theme-color]').setAttribute('content','#fbfaf7')}}catch(e){}</script>
 <style>${css}</style>
 ${jsonld}
 </head>
@@ -95,16 +94,17 @@ ${jsonld}
 <a class="skip" href="#main">Vai al contenuto</a>
 <header class="hd">
 <div class="wrap">
-<a class="logo" href="/" aria-label="${biz.name}, home"><img src="${logoUrl}" width="${Math.round(lh * logoRatio)}" height="${lh}" alt="${biz.name}"></a>
+<a class="logo" href="/" aria-label="${biz.name}, home"><img class="logo-d" src="${logoUrl}" width="${Math.round(lh * logoRatio)}" height="${lh}" alt="${biz.name}"><img class="logo-l" src="${logoLightUrl}" width="${Math.round(lh * logoRatio)}" height="${lh}" alt="${biz.name}"></a>
 <div class="navbox" id="menu">
 <nav class="nav" aria-label="Principale">${navLinks}</nav>
 <div class="nav-foot">
 <a class="btn btn-red" href="${biz.whatsapp}">${icons.chat}Scrivici su WhatsApp</a>
 <a class="btn btn-ghost" href="${biz.phoneHref}">${icons.phone}Chiama ${biz.phoneDisplay}</a>
-<p>${biz.street}, ${biz.city}<br>${biz.venue}</p>
+<p><a class="lnk" href="${biz.mapsPlace}" rel="noopener" target="_blank">${biz.street}, ${biz.city}</a><br>${biz.venue}</p>
 </div>
 </div>
 <a class="btn btn-red btn-sm hd-cta" href="/contatti/">Prova gratuita</a>
+<button class="theme" type="button" aria-label="Passa al tema chiaro"><svg class="sun" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
 <button class="burger" type="button" aria-label="Apri menu" aria-expanded="false" aria-controls="menu"><i></i></button>
 </div>
 </header>
@@ -115,13 +115,13 @@ ${p.body}
 <footer class="ft">
 <div class="wrap">
 <div>
-<a class="logo" href="/" aria-label="${biz.name}, home"><img src="${logoUrl}" width="${Math.round(80 * logoRatio)}" height="80" alt="${biz.name}" loading="lazy"></a>
+<a class="logo" href="/" aria-label="${biz.name}, home"><img class="logo-d" src="${logoUrl}" width="${Math.round(80 * logoRatio)}" height="80" alt="${biz.name}" loading="lazy"><img class="logo-l" src="${logoLightUrl}" width="${Math.round(80 * logoRatio)}" height="80" alt="${biz.name}" loading="lazy"></a>
 <p class="small" style="margin-top:16px;max-width:22em">Calisthenics e corpo libero a Frosinone, con il metodo della ginnastica artistica FGI.</p>
 </div>
 <div><h2>Pagine</h2><ul>${nav.map((n) => `<li><a href="${n.href}">${n.label}</a></li>`).join('')}</ul></div>
 <div><h2>Seguici</h2><ul><li><a href="${biz.instagram}" rel="noopener me" target="_blank">Instagram</a></li><li><a href="${biz.facebook}" rel="noopener me" target="_blank">Facebook</a></li><li><a href="${biz.whatsapp}">WhatsApp</a></li></ul></div>
 <div><h2>Dove siamo</h2>
-<address><span>${biz.venue}</span><span>${biz.street}, ${biz.zip} ${biz.city} (${biz.region})</span><a href="${biz.phoneHref}" style="min-height:44px;display:flex;align-items:center">${biz.phone}</a><a href="${biz.mapsPlace}" rel="noopener" target="_blank" style="min-height:44px;display:flex;align-items:center;color:var(--redt)">Apri su Google Maps →</a></address></div>
+<address><span>${biz.venue}</span><a class="lnk" href="${biz.mapsPlace}" rel="noopener" target="_blank">${biz.street}, ${biz.zip} ${biz.city} (${biz.region})</a><a href="${biz.phoneHref}" style="min-height:44px;display:flex;align-items:center">${biz.phone}</a></address></div>
 <p class="copy">© ${new Date().getFullYear()} ${biz.name}. Tutti i diritti riservati.</p>
 </div>
 </footer>
@@ -131,6 +131,7 @@ ${p.body}
 </div>
 <script>
 (function(){var b=document.querySelector('.burger'),h=document.documentElement,m=document.getElementById('menu');if(!b||!m)return;function s(o){h.classList.toggle('menu-open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Chiudi menu':'Apri menu')}b.addEventListener('click',function(){s(!h.classList.contains('menu-open'))});m.addEventListener('click',function(e){if(e.target.closest('a'))s(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false)});matchMedia('(min-width:960px)').addEventListener('change',function(e){if(e.matches)s(false)})})();
+(function(){var t=document.querySelector('.theme'),h=document.documentElement,m=document.querySelector('meta[name=theme-color]');if(!t)return;function l(){return h.getAttribute('data-theme')==='light'}function u(){t.setAttribute('aria-label',l()?'Passa al tema scuro':'Passa al tema chiaro');m&&m.setAttribute('content',l()?'#fbfaf7':'#0a0a0a')}u();t.addEventListener('click',function(){if(l())h.removeAttribute('data-theme');else h.setAttribute('data-theme','light');try{localStorage.setItem('theme',l()?'light':'dark')}catch(e){}u()})})();
 </script>
 </body>
 </html>
