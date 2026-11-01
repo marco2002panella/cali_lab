@@ -379,3 +379,16 @@ a,button{touch-action:manipulation}
 .lrow.solo .h3,.lrow.solo .ltxt{transform-origin:center}
 .lrow .ltxt .h3:hover{scale:1}
 }
+.rv-p{transform:translateY(30px);scale:.96;transition-duration:.8s,.8s,.8s}
+.rv-p.in{scale:1}
+.rv-t{transform:translateX(-24px)}
+.rv.out{opacity:0;transform:translateY(-26px)}
+.rv-p.out{scale:.96}
+@keyframes rvIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:no-preference){
+.js.go .hero>div>*,.js.go .pagehead>*,.js.go .art-head>*,.js main>.wrap>.crumbs,.js.go .hero-photo,.js.go .art-cover,.js.go .lphotos:first-child{animation:rvIn .8s cubic-bezier(.2,.7,.2,1) both}
+.js.go .hero>div>*:nth-child(2),.js.go .pagehead>*:nth-child(2),.js.go .art-head>*:nth-child(2){animation-delay:.08s}
+.js.go .hero>div>*:nth-child(3),.js.go .pagehead>*:nth-child(3),.js.go .art-head>*:nth-child(3){animation-delay:.16s}
+.js.go .hero>div>*:nth-child(4),.js.go .pagehead>*:nth-child(4),.js.go .art-head>*:nth-child(4){animation-delay:.24s}
+.js.go .hero-photo{animation-delay:.2s}
+}
