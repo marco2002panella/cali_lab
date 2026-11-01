@@ -1,1 +1,7 @@
 calisthenicsfrosinone.it/
+node_modules
+dist
+.cache
+.wrangler
+.dev.vars
+*.log
