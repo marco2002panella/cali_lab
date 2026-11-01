@@ -88,7 +88,7 @@ ${ogUrl ? `<meta name="twitter:image" content="${ogUrl}">` : ''}
 <link rel="preload" href="${fonts['inter-400']}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${fonts['inter-600']}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${fonts['barlow-800']}" as="font" type="font/woff2" crossorigin>
-<script>document.documentElement.classList.add('js');try{if(localStorage.getItem('theme')==='light'){document.documentElement.setAttribute('data-theme','light');document.querySelector('meta[name=theme-color]').setAttribute('content','#fbfaf7')}}catch(e){}</script>
+<script>document.documentElement.classList.add('js');var t=null;try{t=localStorage.getItem('theme')}catch(e){}if(t==='light'||(t!=='dark'&&matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.setAttribute('data-theme','light');document.querySelector('meta[name=theme-color]').setAttribute('content','#fbfaf7')}</script>
 <style>${css}</style>
 ${jsonld}
 </head>
@@ -133,7 +133,7 @@ ${p.body}
 </div>
 <script>
 (function(){var b=document.querySelector('.burger'),h=document.documentElement,m=document.getElementById('menu');if(!b||!m)return;function s(o){h.classList.toggle('menu-open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Chiudi menu':'Apri menu')}b.addEventListener('click',function(){s(!h.classList.contains('menu-open'))});m.addEventListener('click',function(e){if(e.target.closest('a'))s(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false)});matchMedia('(min-width:960px)').addEventListener('change',function(e){if(e.matches)s(false)})})();
-(function(){var t=document.querySelector('.theme'),h=document.documentElement,m=document.querySelector('meta[name=theme-color]');if(!t)return;function l(){return h.getAttribute('data-theme')==='light'}function u(){t.setAttribute('aria-label',l()?'Passa al tema scuro':'Passa al tema chiaro');m&&m.setAttribute('content',l()?'#fbfaf7':'#0a0a0a')}u();t.addEventListener('click',function(){if(l())h.removeAttribute('data-theme');else h.setAttribute('data-theme','light');try{localStorage.setItem('theme',l()?'light':'dark')}catch(e){}u()})})();
+(function(){var t=document.querySelector('.theme'),h=document.documentElement,m=document.querySelector('meta[name=theme-color]');if(!t)return;function l(){return h.getAttribute('data-theme')==='light'}function u(){t.setAttribute('aria-label',l()?'Passa al tema scuro':'Passa al tema chiaro');m&&m.setAttribute('content',l()?'#fbfaf7':'#0a0a0a')}u();matchMedia('(prefers-color-scheme: light)').addEventListener('change',function(e){var k=null;try{k=localStorage.getItem('theme')}catch(x){}if(k)return;if(e.matches)h.setAttribute('data-theme','light');else h.removeAttribute('data-theme');u()});t.addEventListener('click',function(){if(l())h.removeAttribute('data-theme');else h.setAttribute('data-theme','light');try{localStorage.setItem('theme',l()?'light':'dark')}catch(e){}u()})})();
 </script>
 <script type="speculationrules">{"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}</script>
 <script>(function(){var d={};function p(e){var a=e.target.closest&&e.target.closest("a[href^=\"/\"]");if(!a||d[a.href])return;d[a.href]=1;var l=document.createElement("link");l.rel="prefetch";l.href=a.href;document.head.appendChild(l)}document.addEventListener("touchstart",p,{passive:true});document.addEventListener("mouseover",p,{passive:true})})()</script>
