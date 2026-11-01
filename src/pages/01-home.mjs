@@ -1,6 +1,6 @@
 import { biz } from '../site.mjs';
 import { icons } from '../layout.mjs';
-import { ctaBand, courseCards } from '../ui.mjs';
+import { ctaBand, tracks } from '../ui.mjs';
 
 export default ({ img }) => ({
   path: '/',
@@ -29,6 +29,7 @@ export default ({ img }) => ({
 <div class="ph">${img('coach-verticale', { alt: 'Il coach assiste una verticale', sizes: '(min-width:960px) 280px, (min-width:600px) 44vw, 72vw', pos: '60% 60%' })}</div>
 <div class="ph">${img('maglia-cali-lab', { alt: 'La maglia Cali Lab vista da dietro', sizes: '(min-width:960px) 280px, (min-width:600px) 44vw, 72vw', pos: '55% 52%' })}</div>
 </div>
+<script>(function(){var s=document.querySelector('.strip');if(!s||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var k=s.children,vis=false,hold=0;function cur(){var c=s.scrollLeft+s.clientWidth/2,b=0,d=1e9;for(var i=0;i<k.length;i++){var m=Math.abs(k[i].offsetLeft+k[i].offsetWidth/2-c);if(m<d){d=m;b=i}}return b}function step(){if(!vis||Date.now()<hold||s.scrollWidth<=s.clientWidth+4)return;var n=cur()+1;if(n>=k.length)n=0;s.scrollTo({left:k[n].offsetLeft+k[n].offsetWidth/2-s.clientWidth/2,behavior:'smooth'})}['touchstart','pointerdown','wheel'].forEach(function(e){s.addEventListener(e,function(){hold=Date.now()+7000},{passive:true})});new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(s);setInterval(step,3200)})();</script>
 </section>
 
 <section class="sec wrap" aria-labelledby="metodo-t">
@@ -43,7 +44,7 @@ export default ({ img }) => ({
 
 <section class="sec wrap" aria-labelledby="corsi-t">
 <div class="head"><h2 class="h2" id="corsi-t">Corsi di calisthenics a Frosinone</h2><a class="more" href="/corsi/">Tutti i dettagli →</a></div>
-<div class="grid c3" style="margin-top:40px">${courseCards(img)}</div>
+${tracks()}
 </section>
 
 <section class="sec wrap" aria-labelledby="dove-t">

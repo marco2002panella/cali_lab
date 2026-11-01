@@ -11,19 +11,25 @@ export const ctaBand = ({ title = '2 prove gratuite', text = 'Scrivi ad Andrea, 
 </div>
 </section>`;
 
-const cardPhoto = { junior: ['junior-bilanciere', '55% 50%', 'Il coach segue un ragazzo durante un esercizio al bilanciere'], sera: ['verticale-allieva', '45% 40%', 'Allieva in verticale libera in palestra'], mattina: ['planche-parallettes', '35% 50%', 'Atleta in planche sulle parallettes'] };
-
-export const courseCards = (img, { buttons = true } = {}) => shifts.map((s) => {
-  const [name, pos, alt] = cardPhoto[s.id];
-  const href = s.id === 'junior' ? biz.whatsappJunior : biz.whatsapp;
-  return `<article class="course${s.isNew ? ' is-new' : ''}">
-<div class="ph">${s.isNew ? '<span class="tag">NUOVO</span>' : ''}${img(name, { alt, pos, sizes: '(min-width:960px) 380px, (min-width:600px) 45vw, 92vw' })}</div>
-<div class="course-b">
-<h3 class="h3">${s.name}</h3>
-<p class="muted">${s.who}</p>
-<p style="margin-top:14px;font-weight:600">${s.days}</p>
-<p class="t">${s.time}</p>
-${buttons ? `<a class="btn btn-ghost btn-sm" href="${href}">Prenota una prova</a>` : ''}
-</div>
-</article>`;
-}).join('');
+// Due percorsi: Junior e Adulti. Gli orari sono righe compatte, il link di prenotazione è testuale.
+export const tracks = () => {
+  const junior = shifts.filter((s) => s.id === 'junior');
+  const adulti = shifts.filter((s) => s.id !== 'junior');
+  const rows = (list) => list.map((s) => `<li><span>${s.days}</span><b>${s.time}</b></li>`).join('');
+  return `<div class="tracks">
+<article class="track">
+<p class="eyebrow">Ragazzi 12–16 anni</p>
+<h3 class="h3">Cali Lab Junior</h3>
+<p class="muted">Coordinazione, mobilità, equilibrio e forza a corpo libero, con progressioni pensate per la crescita.</p>
+<ul class="times">${rows(junior)}</ul>
+<a class="go" href="${biz.whatsappJunior}">Prenota una prova →</a>
+</article>
+<article class="track">
+<p class="eyebrow">Dai 17 anni · tutti i livelli</p>
+<h3 class="h3">Adulti</h3>
+<p class="muted">Verticale, skills e potenziamento in lezioni da 90 minuti, sempre guidate da un Tecnico Federale.</p>
+<ul class="times">${rows(adulti)}</ul>
+<a class="go" href="${biz.whatsapp}">Prenota una prova →</a>
+</article>
+</div>`;
+};

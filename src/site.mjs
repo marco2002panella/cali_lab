@@ -9,7 +9,7 @@ export const biz = {
   phoneHref: 'tel:+393381363965',
   phoneDisplay: '338 136 3965',
   whatsapp: 'https://wa.me/393381363965?text=Ciao%20Andrea,%20vorrei%20prenotare%20le%202%20prove%20gratuite%20da%20Cali%20Lab',
-  whatsappJunior: 'https://wa.me/393381363965?text=Ciao%21%20Vorrei%20prenotare%20le%202%20prove%20gratuite%20per%20il%20nuovo%20corso%20Cali%20Lab%20Junior.',
+  whatsappJunior: 'https://wa.me/393381363965?text=Ciao%21%20Vorrei%20prenotare%20le%202%20prove%20gratuite%20per%20Cali%20Lab%20Junior.',
   street: 'Via Ecetra 1',
   zip: '03100',
   city: 'Frosinone',
