@@ -10,9 +10,11 @@ export default ({ img }) => ({
   pageType: 'ContactPage',
   crumbs: [{ name: 'Contatti', path: '/contatti/' }],
   body: `
+<div class="band">
 <section class="wrap pagehead">
 <h1 class="h1">Prenota<br><span class="red">2 prove</span> gratuite</h1>
 </section>
+</div>
 
 <section class="sec wrap" style="display:grid;gap:40px">
 <div class="grid c2" style="align-items:start;gap:48px 64px">

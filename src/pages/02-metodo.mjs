@@ -1,4 +1,4 @@
-import { ctaBand } from '../ui.mjs';
+import { ctaBand, ic } from '../ui.mjs';
 
 const steps = [
   { n: '01', t: 'Forza e propriocezione', p: 'Impari a percepire ogni muscolo: una forza reale, che parte dal core e arriva alle estremità.', img: 'anelli-coach', alt: 'Il coach aiuta un ragazzo agli anelli', pos: '60% 50%' },
@@ -14,11 +14,13 @@ export default ({ img }) => ({
   ogImage: 'anelli-coach',
   crumbs: [{ name: 'Metodo', path: '/metodo/' }],
   body: `
+<div class="band">
 <section class="wrap pagehead">
 <p class="eyebrow" style="margin-bottom:16px">Allenamento consapevole</p>
 <h1 class="h1">Il metodo<br><span class="red">Cali Lab</span></h1>
 <p class="lede">Rendere la precisione e il metodo scientifico della ginnastica d’élite alla portata di tutti. Non solo più forti: più consapevoli, coordinati ed eleganti nei movimenti.</p>
 </section>
+</div>
 
 <div class="wrap" style="display:grid;gap:clamp(56px,9vw,104px);margin-top:var(--sec)">
 ${steps.map((s, i) => `<section class="alt${i % 2 ? ' rev' : ''}" aria-labelledby="m${i}">
@@ -30,9 +32,9 @@ ${steps.map((s, i) => `<section class="alt${i % 2 ? ' rev' : ''}" aria-labelledb
 <section class="sec wrap" aria-labelledby="perche">
 <h2 class="h2" id="perche">Perché sceglierlo</h2>
 <ul class="pillars" style="list-style:none;margin-top:32px">
-<li class="pillar"><h3 class="h3">Capacità latenti</h3><p>Valorizzi le tue capacità fisiche, anche quelle che non sapevi di avere.</p></li>
-<li class="pillar"><h3 class="h3">Limiti in sicurezza</h3><p>Impari ad ascoltare il corpo e a superare i limiti senza rischiare.</p></li>
-<li class="pillar"><h3 class="h3">Tecnica perfetta</h3><p>Risultati estetici e funzionali come conseguenza di una tecnica pulita.</p></li>
+<li class="pillar">${ic('bolt')}<h3 class="h3">Capacità latenti</h3><p>Valorizzi le tue capacità fisiche, anche quelle che non sapevi di avere.</p></li>
+<li class="pillar">${ic('shield')}<h3 class="h3">Limiti in sicurezza</h3><p>Impari ad ascoltare il corpo e a superare i limiti senza rischiare.</p></li>
+<li class="pillar">${ic('check')}<h3 class="h3">Tecnica perfetta</h3><p>Risultati estetici e funzionali come conseguenza di una tecnica pulita.</p></li>
 </ul>
 <div class="btns" style="margin-top:36px"><a class="btn btn-ghost" href="/corsi/">Vedi corsi e orari</a></div>
 </section>

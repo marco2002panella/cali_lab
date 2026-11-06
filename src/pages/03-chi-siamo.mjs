@@ -1,5 +1,5 @@
 import { biz, SITE_URL } from '../site.mjs';
-import { ctaBand } from '../ui.mjs';
+import { ctaBand, ic } from '../ui.mjs';
 
 export default ({ img }) => ({
   path: '/chi-siamo/',
@@ -14,6 +14,7 @@ export default ({ img }) => ({
     description: 'Ex atleta agonista di ginnastica artistica, Tecnico Federale FGI (III livello SNaQ) e psicologo della comunicazione e del marketing. Ha fondato Cali Lab nel 2022.',
   }],
   body: `
+<div class="band">
 <section class="wrap pagehead profile" aria-labelledby="h1">
 <div class="ph">${img('andrea-zomparelli', { alt: 'Andrea Zomparelli, fondatore e coach di Cali Lab Frosinone', eager: true, sizes: '(min-width:960px) 440px, 92vw', pos: '50% 25%' })}</div>
 <div>
@@ -27,13 +28,14 @@ export default ({ img }) => ({
 </ul>
 </div>
 </section>
+</div>
 
 <section class="sec wrap" aria-labelledby="come">
 <h2 class="h2" id="come">Come lavoriamo</h2>
 <ul class="pillars" style="list-style:none;margin-top:32px">
-<li class="pillar"><h3 class="h3">Precisione tecnica</h3><p>Nessuna ripetizione sporca: progressioni rigorose per una forza reale.</p></li>
-<li class="pillar"><h3 class="h3">Sicurezza e mobilità</h3><p>Prima di caricare, si condizionano tendini e articolazioni.</p></li>
-<li class="pillar"><h3 class="h3">Per tutti</h3><p>Dal principiante all’atleta avanzato, ognuno al proprio ritmo.</p></li>
+<li class="pillar">${ic('target')}<h3 class="h3">Precisione tecnica</h3><p>Nessuna ripetizione sporca: progressioni rigorose per una forza reale.</p></li>
+<li class="pillar">${ic('shield')}<h3 class="h3">Sicurezza e mobilità</h3><p>Prima di caricare, si condizionano tendini e articolazioni.</p></li>
+<li class="pillar">${ic('users')}<h3 class="h3">Per tutti</h3><p>Dal principiante all’atleta avanzato, ognuno al proprio ritmo.</p></li>
 </ul>
 </section>
 

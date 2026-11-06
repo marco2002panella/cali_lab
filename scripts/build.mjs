@@ -47,8 +47,7 @@ async function build() {
   // ---- logo / icone ----
   const logoSvg = fs.readFileSync(path.join(SRC, 'logo.svg'));
   const logoUrl = emit('logo', 'svg', logoSvg);
-  const logoLightUrl = emit('logo-light', 'svg', fs.readFileSync(path.join(SRC, 'logo-light.svg')));
-  const vb = logoSvg.toString().match(/viewBox="([^"]+)"/)[1].split(/\s+/).map(Number);
+    const vb = logoSvg.toString().match(/viewBox="([^"]+)"/)[1].split(/\s+/).map(Number);
   const logoRatio = vb[2] / vb[3];
   const iconBg = { r: 10, g: 10, b: 10, alpha: 1 };
   const square = async (size) => {
@@ -117,7 +116,7 @@ async function build() {
   };
 
   // ---- pagine ----
-  const ctx = { img, og, css, fonts, logoUrl, logoLightUrl, logoRatio, images };
+  const ctx = { img, og, css, fonts, logoUrl, logoRatio, images };
   const { renderPage } = await import(pathToFileURL(path.join(SRC, 'layout.mjs')).href + `?t=${Date.now()}`);
   const pagesDir = path.join(SRC, 'pages');
   const list = [];

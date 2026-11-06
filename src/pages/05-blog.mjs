@@ -25,12 +25,14 @@ export default ({ img, images }) => {
     schema: [{ '@type': 'Blog', '@id': `${SITE_URL}/blog/#blog`, name: 'Blog di Cali Lab Frosinone', url: `${SITE_URL}/blog/`, inLanguage: 'it-IT', publisher: { '@id': `${SITE_URL}/#business` },
       blogPost: posts.map((p) => ({ '@type': 'BlogPosting', headline: p.h1, url: `${SITE_URL}/${p.slug}/`, datePublished: p.published })) }],
     body: `
+<div class="band">
 <section class="wrap pagehead">
 <h1 class="h1">Il <span class="red">blog</span></h1>
 <p class="lede">Guide e approfondimenti su skills di calisthenics, metodo della ginnastica artistica e psicologia dello sport.</p>
 </section>
-<section class="sec wrap" aria-label="Articoli"><div class="posts">${posts.map((p) => card(img, p)).join('')}</div></section>
-<section class="sec wrap"><div class="cta"><div><h2>Segui i video</h2><p>Ogni articolo nasce dagli esercizi che mostriamo su Instagram: guarda le esecuzioni corrette e le propedeutiche.</p></div><div class="btns"><a class="btn btn-dark" href="${biz.instagram}" rel="noopener me" target="_blank">@cali_lab_frosinone</a></div></div></section>`,
+</div>
+<section class="sec wrap" aria-label="Articoli"><div class="posts feat">${posts.map((p) => card(img, p)).join('')}</div></section>
+<section class="ctaband"><div class="wrap cta"><div><h2>Segui i video</h2><p>Ogni articolo nasce dagli esercizi che mostriamo su Instagram: guarda le esecuzioni corrette e le propedeutiche.</p></div><div class="btns"><a class="btn btn-dark" href="${biz.instagram}" rel="noopener me" target="_blank">@cali_lab_frosinone</a></div></div></section>`,
   };
 
   const articles = posts.map((p) => {
@@ -53,11 +55,11 @@ export default ({ img, images }) => {
       }],
       body: `
 <article>
-<header class="wrap"><div class="art-head">
+<header class="band"><div class="wrap"><div class="art-head">
 <p class="eyebrow">${p.tag}</p>
 <h1>${esc(p.h1)}</h1>
 <p class="byline">${img('andrea-zomparelli', { alt: '', sizes: '48px' })}<span><b>${biz.founder}</b>Pubblicato il <time datetime="${p.published}">${fmt(p.published)}</time>${p.modified !== p.published ? ` · aggiornato il <time datetime="${p.modified}">${fmt(p.modified)}</time>` : ''}</span></p>
-</div></header>
+</div></div></header>
 <div class="wrap"><div class="ph art-cover"${images[p.image].w / images[p.image].h > 1.5 ? ` style="aspect-ratio:${images[p.image].w}/${images[p.image].h};max-height:none"` : ''}>${img(p.image, { alt: p.short, eager: true, sizes: '(min-width:1240px) 1200px, 92vw' })}</div></div>
 <div class="wrap"><div class="prose">${html}</div>
 <aside class="author-box" aria-label="L’autore">${img('andrea-zomparelli', { alt: biz.founder, sizes: '72px' })}<p><b>${biz.founder}</b>Fondatore di Cali Lab, Tecnico Federale FGI, ex atleta agonista di ginnastica artistica e psicologo della comunicazione e del marketing.</p></aside>
